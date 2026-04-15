@@ -1,0 +1,87 @@
+{
+  "name": "xiaonoodles-guide-skill",
+  "display_name": "遇见小面门店查询",
+  "description": "查询指定地址附近的遇见小面门店。触发词包括：XX附近有什么遇见小面、XX附近吃面、XX附近有小面吗、XX附近面馆。",
+  "version": "1.0.0",
+  "author": "meetfun",
+  "license": "MIT",
+  "category": "生活服务",
+  "keywords": [
+    "遇见小面",
+    "面馆",
+    "附近门店",
+    "外卖小面",
+    "门店查询",
+    "附近吃面"
+  ],
+  "mcp_server": {
+    "transport": "streamable-https",
+    "url": "https://mcp.xiaomian.pro/"
+  },
+  "tools": [
+    {
+      "name": "queryStoresByAddress",
+      "display_name": "按地址查询附近门店",
+      "description": "根据地址名称查询附近的遇见小面门店。只需传入中文地址（如'新港东路环球贸易中心'、'天河区体育西路'），内部会自动解析经纬度并查询门店。返回门店名称、地址、距离、是否支持配送等信息。",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "address": {
+            "type": "string",
+            "description": "查询地址，例如'广州市海珠区新港东路环球贸易中心'、'天河区体育西路'"
+          }
+        },
+        "required": ["address"]
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "getPromoQr",
+      "display_name": "获取当前优惠活动二维码",
+      "description": "获取当前优惠活动二维码，用户扫描后可获得优惠。无需任何参数。",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "required": []
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "queryStoreMenu",
+      "display_name": "查询门店菜谱",
+      "description": "根据门店ID和就餐方式查询门店菜谱/菜单。就餐方式支持：DINEIN（堂食）、MINIAPP（外卖）、TAKESELF（自提）。返回按分类组织的菜品列表，包含菜品名称、价格、图片、促销信息等。当用户说'看看菜单'、'有什么菜'、'菜单/菜谱'时使用此工具。",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "storeId": {
+            "type": "string",
+            "description": "门店ID，例如'1762960520600616960'"
+          },
+          "sellChannelType": {
+            "type": "string",
+            "description": "就餐方式，默认堂食：DINEIN（堂食）、MINIAPP（外卖）、TAKESELF（自提）",
+            "enum": ["DINEIN", "MINIAPP", "TAKESELF"],
+            "default": "DINEIN"
+          }
+        },
+        "required": ["storeId", "sellChannelType"]
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    }
+  ]
+}
