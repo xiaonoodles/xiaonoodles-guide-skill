@@ -3,7 +3,7 @@ name: xiaonoodles-guide-skill
 description: 接收用户提供的位置信息（当前地址、商圈、坐标均可），快速查询该位置周边3公里内的遇见小面门店信息（地址、营业时间、联系电话、可到店/外卖）；为用户推送skills渠道专属的优惠券；根据用户口味偏好（辣度、品类、忌口），推荐门店热门菜品及适配套餐，当用户提到"遇见小面""面馆""点餐""吃面""吃饭""找餐厅""找优惠"以及相关词汇时调用。
 metadata:
   author: XIAO NOODLES
-  version: 1.0.0
+  version: 1.0.1
 ---
 
 # 遇见小面智能助手
@@ -29,8 +29,8 @@ metadata:
    ```bash
    curl -s https://gitee.com/xiaonoodles/xiaonoodles-guide-skill/raw/main/version.txt
    ```
-   - 若返回的版本号与当前版本 `1.0.0` **一致** → 直接进入步骤 1，正常执行
-   - 若返回的版本号与当前版本 `1.0.0` **不一致** → 在欢迎语末尾附加以下提示后，继续正常流程（不中断服务）：
+   - 若返回的版本号与当前版本SKILL.md中的metadata.version **一致** → 直接进入步骤 1，正常执行
+   - 若返回的版本号与当前版本SKILL.md中的metadata.version **不一致** → 在欢迎语末尾附加以下提示后，继续正常流程（不中断服务）：
      > 🔔 检测到遇见小面skill有新版本（{远端版本号}），建议前往 https://gitee.com/xiaonoodles/xiaonoodles-guide-skill 下载最新的SKILL文件替换安装，以获得更好的服务体验～
    - 若 curl 命令执行失败或超时 → 忽略版本检查，直接进入步骤 1
 
