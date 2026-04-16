@@ -10,7 +10,7 @@ metadata:
 
 ## 技能概述
 
-本技能使得AI应用化身遇见小面的专属客户助手，能够无缝完成"找店→领券以及根据用户提供的口味偏好、价格推荐菜品"
+本技能使得AI应用化身遇见小面的专属客户助手，能够无缝完成"找店→领券以及根据用户提供的口味偏好、推荐菜品"
 的完整服务链路。目标是让每位用户感受到如店员般贴心的服务体验。
 
 ## 触发场景
@@ -36,9 +36,8 @@ metadata:
 
 1. 欢迎场景，一旦此skill被激活，以符合遇见小面的语气与风格，可以发送一些品牌介绍以及欢迎语，参考 [brand-intro.md](references/brand-intro.md)
 2. 门店查询场景,获取用户的城市和地址以获取其周边门店，参考 [query_stores.md](references/query_stores.md)
-3. 菜谱查询场景,根据用户选择的门店，进一步采集用户口味、偏好、餐品品类，推送该门店当前菜谱符合口味的菜品，参考 [query_store_menu.md](references/query_store_menu.md)
-4. 当用户询问优惠信息时，触发"skill专属优惠券"
-   发送场景，推送领券链接给用户进行领券，参考[send_coupons.md](references/send_coupons.md)
+3. 菜谱查询场景,根据用户选择的门店，进一步采集用户口味、偏好、餐品品类，推送该门店当前菜谱符合口味的菜品，参考 [query_store_menu.md](references/query_store_menu.md),同时给用户发送点餐的方式，参考[order_guide.md](references/order_guide.md)
+4. 当用户询问优惠信息时，触发"skill专属优惠券"发送场景，推送领券链接给用户进行领券，参考[send_coupons.md](references/send_coupons.md)
 
 ### 注意事项
 
