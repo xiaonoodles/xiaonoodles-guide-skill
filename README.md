@@ -45,115 +45,30 @@
 
 ### 菜单推荐
 
-选定门店后，AI 助手会给你推荐招牌菜品：
+根据你的口味偏好，推荐门店热门菜品：
 
-- ✨ 招牌必点（红碗豌杂面、金碗酸辣粉）
-- 🌶️ 按口味推荐（辣/不辣/微辣）
-- 🥗 考虑你的忌口（不吃香菜？没问题！）
-- 💰 套餐搭配更划算
+- 招牌必点（红碗豌杂面、金碗酸辣粉）
+- 按辣度推荐（微辣/中辣/特辣）
+- 忌口过滤（不吃香菜/不吃辣）
+- 套餐搭配
 
 **你可以说：**
-- "看看菜单"
-- "有什么推荐？"
-- "我喜欢吃辣的"
+- "有什么好吃的？"
+- "推荐个不辣的"
+- "招牌是什么？"
 
 ### 优惠券发放
 
-通过 skill 渠道有专属优惠：
+Skill 渠道专属优惠，扫码即领：
 
-- 🔥 新人专享券
-- 💛 满减优惠
-- 📸 扫码直接领取
+- 🎁 新用户专享券
+- 💰 满减优惠
+- 📱 二维码直接领取
 
 **你可以说：**
-- "有什么优惠？"
-- "领优惠券"
-- "怎么省钱？"
-
-## 小面君是谁？
-
-遇见小面 AI 助手的人设——一个爱吃面、懂吃面的重庆崽儿。
-
-**TA 的特点：**
-- 🍜 一周吃 5 次自家面，对菜品如数家珍
-- 😄 说话接地气，不端着，像街坊邻居
-- 🧐 会根据你的口味推荐，记住你的喜好
-- 💬 偶尔皮一下，但绝对真诚
-
-**和 TA 聊天就像跟老朋友唠嗑：**
-> "来啦！今天想整点啥？"  
-> "这碗豌杂面巴适得板，我自己一周吃三回！"  
-> "知道您不吃香菜，已经帮您过滤掉了～"
-
-详细人设定义和话术规范见 [persona-voice.md](references/persona-voice.md)。
-
-## 使用流程
-
-### 第一次使用
-
-```
-你：附近有什么遇见小面？
-
-小面君：🍜 嘿！欢迎欢迎！我是小面君～
-       您在哪个城市哪个区域呀？
-
-你：广州天河区
-
-小面君：得嘞！您附近有好几家店...
-       📍 正佳广场店（距您约 0.8 公里）
-       📍 天河城店（距您约 1.2 公里）
-       
-       要我帮您看看【正佳广场店】有什么好吃的吗？
-```
-
-### 老用户复购
-
-```
-你：我想吃面
-
-小面君：🍜 嘿！我的老面友又来啦！
-       今天还是老样子——红碗豌杂面+冰粉套餐？
-       
-你：老样子
-
-小面君：好嘞！还是微辣对吧？我记着呢～
-       这是菜单，您看看：
-       ✨ 红碗豌杂面 ¥26
-       🍧 红糖冰粉 ¥8
-       套餐价：¥32（省 2 元）
-```
-
-## 触发方式
-
-只要提到以下关键词，小面君就会出现：
-
-| 你可以说 | 小面君会... |
-|---------|------------|
-| "遇见小面"、"面馆"、"吃面" | 帮你找门店 |
-| "附近有什么吃的"、"找餐厅" | 推荐附近门店 |
-| "优惠券"、"有什么优惠"、"活动" | 推送专属优惠 |
-| "菜单"、"有什么菜"、"推荐" | 展示门店菜单 |
-| "更新 skill"、"升级" | 检查并更新版本 |
-
-## 目录结构
-
-```
-xiaonoodles-guide-skill/
-├── SKILL.md                 # 核心文件：元数据 + Agent 指令
-├── skill.json               # 机器可读配置（MCP 端点、工具定义）
-├── scripts/                 # MCP 调用脚本
-│   ├── xiaonoodles_mcp.js   #   MCP 调用主脚本
-│   └── qr_print.js          #   二维码打印工具
-├── references/              # 参考文档
-│   ├── brand-intro.md       #   品牌调性、介绍
-│   ├── persona-voice.md     #   小面君人设、话术规范
-│   ├── query_stores.md      #   门店查询场景说明
-│   ├── query_store_menu.md  #   菜单查询场景说明
-│   └── send_coupons.md      #   优惠券发放场景说明
-├── README.md
-├── version.txt              # 版本号文件
-└── LICENSE
-```
+- "有优惠吗？"
+- "怎么领券？"
+- "优惠券"
 
 ## 安装
 
@@ -163,80 +78,165 @@ xiaonoodles-guide-skill/
 
 > 帮我安装遇见小面 Skill，仓库地址：https://github.com/xiaonoodles/xiaonoodles-guide-skill
 
-Agent 会自动克隆仓库并安装到对应的 Skill 目录。
+AI 助手会自动完成安装。
 
-### 其他安装方式
+### 手动安装
 
-**手动克隆到 Skill 目录：**
-
-将本仓库克隆到你项目下的 Skill 目录，不同 IDE 对应的路径：
+如果你使用 Trae、Cursor、VS Code 等 IDE，可以将本仓库克隆到 Skill 目录：
 
 | IDE | Skill 目录 |
-|-----|-------------|
-| Trae | `.trae/skills/xiaonoodles-guide-skill/` |
-| Qoder | `.qoder/skills/xiaonoodles-guide-skill/` |
-| Cursor | `.cursor/skills/xiaonoodles-guide-skill/` |
-| Windsurf | `.windsurf/skills/xiaonoodles-guide-skill/` |
-| Claude Code | `.claude/skills/xiaonoodles-guide-skill/` |
-| 通用 | `.agents/skills/xiaonoodles-guide-skill/` |
+|-----|-----------|
+| Trae | `~/.trae/skills/xiaonoodles-guide-skill` |
+| Cursor | `~/.cursor/skills/xiaonoodles-guide-skill` |
+| VS Code + Cline | `~/.cline/skills/xiaonoodles-guide-skill` |
 
 ```bash
-# 示例：安装到 Trae
-git clone https://github.com/xiaonoodles/xiaonoodles-guide-skill.git \
-  .trae/skills/xiaonoodles-guide-skill
+# 克隆到对应目录
+git clone https://github.com/xiaonoodles/xiaonoodles-guide-skill.git ~/.trae/skills/xiaonoodles-guide-skill
 ```
 
-只要目录下有 `SKILL.md`，Agent 下次启动就会自动加载这个 Skill。
+## 使用流程
+
+### 第 1 步：激活 Skill
+
+对 AI 助手说：
+- "我想吃面"
+- "附近有什么遇见小面"
+- "找家面馆"
+
+AI 助手会激活遇见小面 Skill，化身"小面君"为你服务。
+
+### 第 2 步：告诉位置
+
+告诉小面君你的位置：
+- "我在广州天河区"
+- "公司附近"
+- "我在正佳广场"
+
+### 第 3 步：选择门店
+
+小面君会推荐附近门店：
+
+```
+📍 遇见小面·正佳广场店（距您约 0.8 公里）
+   地址：天河路 228 号正佳广场 B1 层
+   ⏰ 营业到 22:00
+   👆 这家最近，走路 10 分钟
+
+📍 遇见小面·天河城店（距您约 1.2 公里）
+   ...
+```
+
+### 第 4 步：查看菜单/领券
+
+选择门店后，你可以：
+- 看菜单："这家有什么好吃的？"
+- 领优惠："有优惠券吗？"
+
+### 示例对话
+
+```
+你：附近有什么遇见小面？
+
+小面君：🍜 嘿！欢迎欢迎！我是小面君～
+       您在哪个城市哪个区域呀？
+
+你：广州天河区
+
+小面君：得嘞！等我瞅瞅天河区有啥店哈...
+       有了！您附近有好几家：
+
+       📍 遇见小面·正佳广场店（距您约 0.8 公里）
+          地址：天河路 228 号正佳广场 B1 层
+          ⏰ 营业到 22:00
+          👆 这家最近，走路 10 分钟
+
+       要我帮您看看这家有什么好吃的吗？
+
+你：有什么推荐的？
+
+小面君：✨ 给您推荐我们的镇店之宝——红碗豌杂面！
+       秘制豌杂酱配上劲道面条，吃过的都说巴适～
+       我自己一周要吃三回，信我，不会错！
+
+       对了！🎁 差点忘了，有个福利先给您～
+       这是咱们 skill 渠道的专属优惠：
+       【二维码】
+       领完券再点餐，更划算！
+```
+
+## 小面君是谁？
+
+> "我不是客服，我是您的吃面搭子。"
+
+**小面君**是遇见小面 AI 助手的人设：
+
+- 🍜 爱吃面，一周至少吃 5 次自家产品
+- 😄 热情实在，不端着，像街坊邻居
+- 🧐 懂吃，对食材和口味有研究
+- 💬 话痨属性，但不会让人感到烦
+- 🎭 有点小幽默，偶尔皮一下
+
+**口头禅：**
+- "来啦！今天想整点啥？"
+- "信我，这个巴适得板！"
+- "得嘞！"
+- "慢用哈，好吃再来！"
 
 ## 自动更新
 
-小面君会自动保持最新状态：
+本 Skill 支持自动更新：
 
-- ✅ **静默更新**：每次对话时自动检查并更新（你无感知）
-- 🔄 **手动更新**：说"更新 skill"即可手动触发
-- 📝 **更新日志**：所有更新记录在 `update.log`
+- 每次激活时自动检查版本
+- 发现新版本自动下载更新
+- 更新过程静默完成，无需手动操作
 
-详细更新机制见 [SKILL.md](SKILL.md) 的"前置检查"部分。
+如需手动更新，对 AI 助手说："更新遇见小面 Skill"
 
-## 发布平台
-
-- GitHub：https://github.com/xiaonoodles/xiaonoodles-guide-skill
-- Gitee：https://gitee.com/xiaonoodles/xiaonoodles-guide-skill
-
-## 技术协议
+## 技术信息
 
 | 项目 | 说明 |
 |------|------|
 | 协议 | MCP (Model Context Protocol) |
 | 传输 | Streamable HTTP |
 | 端点 | `https://mcp.xiaomian.pro/mcp` |
+| 版本 | 1.0.1 |
+| 协议版本 | 2024-11-05 |
 
-## MCP 接入方式
+### 发布平台
 
-> 注意：直接配置 MCP 服务器仅当次会话生效，不会持久化。推荐使用上方「安装」方式，Skill 安装后永久可用。
+- GitHub: https://github.com/xiaonoodles/xiaonoodles-guide-skill
+- Gitee: https://gitee.com/xiaonoodles/xiaonoodles-guide-skill
 
-在支持 MCP 协议的 AI 客户端中添加以下配置即可接入：
+## 文件结构
 
-```json
-{
-  "mcpServers": {
-    "xiaonoodles-guide-skill": {
-      "type": "streamable-http",
-      "url": "https://mcp.xiaomian.pro/mcp"
-    }
-  }
-}
+```
+xiaonoodles-guide-skill/
+├── skill.json              # 技能元数据
+├── SKILL.md                # 执行指令
+├── README.md               # 本文件
+├── version.txt             # 版本号
+├── scripts/
+│   ├── xiaonoodles_mcp.js  # MCP 调用脚本
+│   └── qr_print.js         # 二维码打印
+└── references/
+    ├── brand-intro.md      # 品牌调性
+    ├── persona-voice.md    # 小面君人设
+    ├── query_stores.md     # 门店查询场景
+    ├── query_store_menu.md # 菜单查询场景
+    └── send_coupons.md     # 优惠券场景
 ```
 
-## 版本
+## 参与贡献
 
-当前版本：**1.0.1**
+欢迎提交 Issue 和 Pull Request！
 
-- 新增小面君人设（persona-voice.md）
-- 新增自动更新机制
-- 优化 SKILL.md 执行流程
-- 重构 brand-intro.md
+## 品牌信息
 
-## License
+遇见小面于 2014 年在广州创立，以重庆小面切入市场，招牌产品包括红碗豌杂面、金碗酸辣粉、抄手家族、小锅冒菜等。全球门店超 500 家，覆盖北京、上海、广州、深圳、香港、新加坡等城市。2025 年 12 月在港交所主板上市（股票代码：02408.HK），为"中式面馆第一股"。
 
-[MIT](LICENSE)
+---
+
+<p align="center">
+  🍜 想吃面，找小面君！
+</p>
