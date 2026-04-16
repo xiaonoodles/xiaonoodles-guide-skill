@@ -87,7 +87,7 @@ xiaonoodles-guide-skill/
 
 ## 技术细节
 
-- MCP 端点：`https://mcp.xiaomian.pro:8081/mcp`
+- MCP 端点：`[https://mcp.xiaomian.pro:8081/mcp](https://mcp.xiaomian.pro/mcp)`
 - 传输协议：Streamable HTTPS（SSE）
 - 会话管理：首次 `initialize` 请求返回 `Mcp-Session-Id` 响应头，后续请求需携带
 - MCP 协议版本：`2024-11-05`
