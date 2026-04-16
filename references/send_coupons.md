@@ -51,7 +51,7 @@ node scripts/qr_print.js "<url>"
 **例子**
 ```bash
 # 打印优惠券链接二维码
-node scripts/qr-print.js "https://xiaomian.pro/coupon/abc123"
+node scripts/qr_print.js "https://xiaomian.pro/coupon/abc123"
 ```
 **注意事项**
 - 生成的二维码支持手机扫码识别

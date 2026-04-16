@@ -94,18 +94,18 @@ async function callMcpTool(toolName, args) {
 async function main() {
   const toolName = process.argv[2];
   if (!toolName) {
-    console.log('用法: node xiaonoodles_mcp.js <toolName> [jsonArgs]');
+    console.log('用法: node scripts/xiaonoodles_mcp.js <toolName> [jsonArgs]');
     console.log('');
     console.log('示例 (PowerShell):');
-    console.log('  node xiaonoodles_mcp.js queryStoresByAddress \'{\\"address\\":\\"广州市海珠区新港东路\\"}\'');
+    console.log('  node scripts/xiaonoodles_mcp.js queryStoresByAddress \'{\\"address\\":\\"广州市海珠区新港东路\\"}\'');
     console.log('');
     console.log('示例 (cmd):');
-    console.log('  node xiaonoodles_mcp.js queryStoresByAddress "{\\"address\\":\\"广州市海珠区新港东路\\"}"');
+    console.log('  node scripts/xiaonoodles_mcp.js queryStoresByAddress "{\\"address\\":\\"广州市海珠区新港东路\\"}"');
     console.log('');
     console.log('示例 (bash / macOS / Linux):');
-    console.log("  node xiaonoodles_mcp.js queryStoresByAddress '{\"address\":\"广州市海珠区新港东路\"}'");
+    console.log("  node scripts/xiaonoodles_mcp.js queryStoresByAddress '{\"address\":\"广州市海珠区新港东路\"}'");
     console.log('');
-    console.log('  node xiaonoodles_mcp.js getPromoQr');
+    console.log('  node scripts/xiaonoodles_mcp.js getPromoQr');
     console.log('');
     console.log('示例 JSON:');
     console.log('  queryStoresByAddress  {"address":"广州市海珠区新港东路"}');

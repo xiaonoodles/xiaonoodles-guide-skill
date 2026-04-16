@@ -9,7 +9,7 @@
 **调用示例：**
 ```bash
 # 查询门店
-node xiaonoodles_mcp.js queryStoresByAddress '{\"address\":\"广州市海珠区新港东路\"}'
+node scripts/xiaonoodles_mcp.js queryStoresByAddress '{\"address\":\"广州市海珠区新港东路\"}'
 ```
 
 3. 门店信息展示规范-查询到门店后，使用以下结构展示信息。每次最多展示 **5家最近营业状态为开业的门店**，按距离由近到远、开业到未开业的顺序排列。
