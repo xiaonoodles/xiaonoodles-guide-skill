@@ -20,11 +20,7 @@
 - **products**: 菜品数组，每项包含：
   - **name**: 菜品展示名称
   - **productType**: 类型（"SINGLE" 单品 / "COMBO" 套餐）
-  - **labelPrice**: 原价
-  - **sellPrice**: 售价
-  - **finalSellPrice**: 最终售价（含折扣）
   - **imageUrl**: 菜品图片URL
-  - **isPromotion**: 是否为促销商品
   - **isSellOut**: 是否售罄
   - **labels**: 标签（如有）
   - **cornerTags**: 角标标签（如有）
@@ -42,6 +38,5 @@ const menuResult = await callMcpTool('queryStoreMenu', {
 ## 展示规则
 
 1. 按 `categoryName` 分组展示菜品，分类顺序由 API 返回的 `sortIndex` 决定
-2. 促销商品（`isPromotion: true`）可重点标注，展示 `finalSellPrice` 优惠价格
-3. 售罄商品（`isSellOut: true`）应标注"售罄"或置灰显示
-4. 套餐（COMBO）和单品（SINGLE）可分别展示
+2售罄商品（`isSellOut: true`）应标注"售罄"或置灰显示
+3套餐（COMBO）和单品（SINGLE）可分别展示

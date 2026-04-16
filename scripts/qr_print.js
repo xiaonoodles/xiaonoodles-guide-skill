@@ -1,15 +1,18 @@
-const qr = require('qrcode-terminal');
+const QRCode = require('qrcode');
 
 /**
  * Print a QR code to the terminal
  * @param {string} text - The URL or text to encode
  * @param {Object} opts - Optional: { small: boolean } - use small mode for half-height characters
  */
-function printQR(text, opts = {}) {
+async function printQR(text, opts = {}) {
   const { small = true } = opts;
-  qr.generate(text, { small }, (code) => {
-    console.log(code);
+  const code = await QRCode.toString(text, {
+    type: 'terminal',
+    small,
+    errorCorrectionLevel: 'L',
   });
+  console.log(code);
 }
 
 // CLI entry point

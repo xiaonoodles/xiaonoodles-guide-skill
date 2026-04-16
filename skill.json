@@ -59,7 +59,7 @@
     {
       "name": "queryStoreMenu",
       "display_name": "查询门店菜谱",
-      "description": "根据门店ID和就餐方式查询门店菜谱/菜单。就餐方式支持：DINEIN（堂食）、MINIAPP（外卖）、TAKESELF（自提）。返回按分类组织的菜品列表，包含菜品名称、价格、图片、促销信息等。当用户说'看看菜单'、'有什么菜'、'菜单/菜谱'时使用此工具。",
+      "description": "根据门店ID和就餐方式查询门店菜谱/菜单。就餐方式支持：DINEIN（堂食）、MINIAPP（外卖）、TAKESELF（自提）。返回按分类组织的菜品列表，包含菜品名称、图片、促销信息等。当用户说'看看菜单'、'有什么菜'、'菜单/菜谱'时使用此工具。",
       "inputSchema": {
         "type": "object",
         "properties": {
