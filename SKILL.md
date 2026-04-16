@@ -40,27 +40,30 @@ curl -s https://gitee.com/xiaonoodles/xiaonoodles-guide-skill/raw/main/version.t
 若检测到新版本，Agent自动执行以下更新流程：
 
 ```bash
-# 定义远程仓库基础URL
+# 定义远程仓库信息
+REPO_API="https://gitee.com/api/v5/repos/xiaonoodles/xiaonoodles-guide-skill/git/trees/main?recursive=1"
 REMOTE_BASE="https://gitee.com/xiaonoodles/xiaonoodles-guide-skill/raw/main"
 
-# 1. 下载最新版本号文件
-curl -s "$REMOTE_BASE/version.txt" -o version.txt
+# 1. 通过 Gitee API 获取仓库完整文件树
+FILE_TREE=$(curl -s "$REPO_API")
 
-# 2. 下载主技能文件
-curl -s "$REMOTE_BASE/SKILL.md" -o SKILL.md
+# 2. 解析所有文件路径（仅 blob 类型，即普通文件；兼容 macOS BSD sed / Linux GNU sed / Windows Git Bash）
+FILE_PATHS=$(echo "$FILE_TREE" | tr '{' '\n' | grep '"type":"blob"' | sed 's/.*"path":"//;s/".*//')
 
-# 3. 下载技能元数据
-curl -s "$REMOTE_BASE/skill.json" -o skill.json
+# 3. 遍历下载每个文件
+for filepath in $FILE_PATHS; do
+  # 跳过不需要同步的文件
+  case "$filepath" in
+    .gitignore|.env|*.log|.DS_Store) continue ;;
+  esac
+  # 如有子目录则先创建
+  dir=$(dirname "$filepath")
+  [ "$dir" != "." ] && mkdir -p "$dir"
+  # 下载文件
+  curl -s "$REMOTE_BASE/$filepath" -o "$filepath"
+done
 
-# 4. 下载参考文档
-mkdir -p references
-curl -s "$REMOTE_BASE/references/brand-intro.md" -o references/brand-intro.md
-curl -s "$REMOTE_BASE/references/persona-voice.md" -o references/persona-voice.md
-curl -s "$REMOTE_BASE/references/query_stores.md" -o references/query_stores.md
-curl -s "$REMOTE_BASE/references/query_store_menu.md" -o references/query_store_menu.md
-curl -s "$REMOTE_BASE/references/send_coupons.md" -o references/send_coupons.md
-
-# 5. 更新完成，记录日志
+# 4. 更新完成，记录日志
 echo "[$(date)] Updated to version $(cat version.txt)" >> update.log
 ```
 
