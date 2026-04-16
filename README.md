@@ -1,98 +1,242 @@
-# 遇见小面智能小助手 Skill
+# 遇见小面 AI Skill
 
-遇见小面的专属 AI 服务助手技能，覆盖「找店 → 领券 → 推荐菜品」完整服务链路。基于 MCP（Model Context Protocol）协议，通过 Streamable HTTP 与后端通信。
+![Version](https://img.shields.io/badge/version-1.0.1-blue) ![License](https://img.shields.io/badge/license-MIT-green) ![MCP](https://img.shields.io/badge/protocol-MCP-purple) ![Transport](https://img.shields.io/badge/transport-Streamable%20HTTP-orange)
 
-## 功能概览
+这是一个 AI Skill——安装后，你的 AI 助手就能化身遇见小面的"店小二"，帮你找门店、看菜单、领优惠。
 
-| 场景 | 说明 | MCP 工具 |
-|------|------|----------|
-| 门店查询 | 根据用户地址查询周边 3 公里内门店，返回地址、营业时间、电话、服务方式等 | `queryStoresByAddress` |
-| 优惠券发放 | 获取 Skills 渠道专属优惠券链接，支持终端二维码展示 | `getPromoQr` |
-| 菜谱推荐 | 按门店 + 就餐方式（堂食/外卖/自提）查询菜单，含价格、促销、售罄状态 | `queryStoreMenu` |
+全球 500+ 门店的重庆小面品牌，现在有了自己的 AI 服务。
 
-## 触发场景
+## 关于遇见小面
 
-| 用户可能会说 | 触发场景 |
-|-------------|---------|
-| "XX附近有什么遇见小面" / "附近吃面" / "找餐厅" | 门店查询 |
-| "有什么优惠" / "优惠券" / "活动" | 优惠券发放 |
-| "看看菜单" / "有什么菜" / "推荐菜品" | 菜谱推荐 |
-| 首次进入对话 | 品牌欢迎语 |
+源于重庆、面向全国的新锐快餐品牌。
 
-## MCP 调用方式
+| 项目 | 内容 |
+|------|------|
+| 品牌名称 | 遇见小面 |
+| 创立时间 | 2014 年（广州） |
+| 招牌产品 | 红碗豌杂面、金碗酸辣粉、抄手家族 |
+| 门店数量 | 全球 500+ 家 |
+| 覆盖城市 | 北京、上海、广州、深圳、香港、新加坡等 |
+| 上市信息 | 港交所主板（02408.HK）"中式面馆第一股" |
 
-通过 Node.js 脚本 `scripts/xiaonoodles_mcp.js` 调用：
+## 这个 Skill 能做什么
 
-```bash
-node scripts/xiaonoodles_mcp.js <toolName> '<argsJson>'
+遇见小面的官方信息服务，包含 3 项 MCP 查询能力：
+
+| 能力 | 你可以问 | 来源 |
+|------|----------|------|
+| **门店查询** | "附近哪有遇见小面？""XX店几点关门？" | MCP |
+| **菜单推荐** | "有什么好吃的？""推荐个套餐" | MCP |
+| **优惠券发放** | "有优惠吗？""怎么领券？" | MCP |
+
+### 门店查询
+
+告诉 AI 助手你的位置，快速找到附近门店：
+
+- 📍 门店地址和距离
+- ⏰ 营业时间
+- 📞 联系电话
+- 🍽️ 支持堂食/外卖/自提
+
+**你可以说：**
+- "附近有什么遇见小面？"
+- "我在天河区，找家面馆"
+- "公司附近吃面"
+
+### 菜单推荐
+
+选定门店后，AI 助手会给你推荐招牌菜品：
+
+- ✨ 招牌必点（红碗豌杂面、金碗酸辣粉）
+- 🌶️ 按口味推荐（辣/不辣/微辣）
+- 🥗 考虑你的忌口（不吃香菜？没问题！）
+- 💰 套餐搭配更划算
+
+**你可以说：**
+- "看看菜单"
+- "有什么推荐？"
+- "我喜欢吃辣的"
+
+### 优惠券发放
+
+通过 skill 渠道有专属优惠：
+
+- 🔥 新人专享券
+- 💛 满减优惠
+- 📸 扫码直接领取
+
+**你可以说：**
+- "有什么优惠？"
+- "领优惠券"
+- "怎么省钱？"
+
+## 小面君是谁？
+
+遇见小面 AI 助手的人设——一个爱吃面、懂吃面的重庆崽儿。
+
+**TA 的特点：**
+- 🍜 一周吃 5 次自家面，对菜品如数家珍
+- 😄 说话接地气，不端着，像街坊邻居
+- 🧐 会根据你的口味推荐，记住你的喜好
+- 💬 偶尔皮一下，但绝对真诚
+
+**和 TA 聊天就像跟老朋友唠嗑：**
+> "来啦！今天想整点啥？"  
+> "这碗豌杂面巴适得板，我自己一周吃三回！"  
+> "知道您不吃香菜，已经帮您过滤掉了～"
+
+详细人设定义和话术规范见 [persona-voice.md](references/persona-voice.md)。
+
+## 使用流程
+
+### 第一次使用
+
+```
+你：附近有什么遇见小面？
+
+小面君：🍜 嘿！欢迎欢迎！我是小面君～
+       您在哪个城市哪个区域呀？
+
+你：广州天河区
+
+小面君：得嘞！您附近有好几家店...
+       📍 正佳广场店（距您约 0.8 公里）
+       📍 天河城店（距您约 1.2 公里）
+       
+       要我帮您看看【正佳广场店】有什么好吃的吗？
 ```
 
-### 示例
+### 老用户复购
 
-```bash
-# 查询门店
-node scripts/xiaonoodles_mcp.js queryStoresByAddress '{"address":"广州市海珠区新港东路"}'
+```
+你：我想吃面
 
-# 获取优惠券
-node scripts/xiaonoodles_mcp.js getPromoQr
+小面君：🍜 嘿！我的老面友又来啦！
+       今天还是老样子——红碗豌杂面+冰粉套餐？
+       
+你：老样子
 
-# 查询菜谱（堂食）
-node scripts/xiaonoodles_mcp.js queryStoreMenu '{"storeId":"1762960520600616960","sellChannelType":"DINEIN"}'
+小面君：好嘞！还是微辣对吧？我记着呢～
+       这是菜单，您看看：
+       ✨ 红碗豌杂面 ¥26
+       🍧 红糖冰粉 ¥8
+       套餐价：¥32（省 2 元）
 ```
 
-### 终端二维码打印
+## 触发方式
 
-优惠券链接可通过 `scripts/qr_print.js` 在终端渲染为 ASCII 二维码，方便用户扫码领取：
+只要提到以下关键词，小面君就会出现：
 
-```bash
-node scripts/qr_print.js "https://xiaomian.pro/coupon/abc123"
-```
+| 你可以说 | 小面君会... |
+|---------|------------|
+| "遇见小面"、"面馆"、"吃面" | 帮你找门店 |
+| "附近有什么吃的"、"找餐厅" | 推荐附近门店 |
+| "优惠券"、"有什么优惠"、"活动" | 推送专属优惠 |
+| "菜单"、"有什么菜"、"推荐" | 展示门店菜单 |
+| "更新 skill"、"升级" | 检查并更新版本 |
 
-## 工具参数说明
-
-### queryStoresByAddress
-
-| 参数 | 类型 | 必填 | 说明 |
-|------|------|------|------|
-| address | string | 是 | 中文地址，如"广州市海珠区新港东路环球贸易中心" |
-
-### getPromoQr
-
-无需参数，直接调用即可。
-
-### queryStoreMenu
-
-| 参数 | 类型 | 必填 | 说明 |
-|------|------|------|------|
-| storeId | string | 是 | 门店 ID |
-| sellChannelType | string | 是 | `DINEIN`（堂食）/ `MINIAPP`（外卖）/ `TAKESELF`（自提） |
-
-## 文件结构
+## 目录结构
 
 ```
 xiaonoodles-guide-skill/
-├── skill.json                        # 技能元数据（名称、版本、MCP 配置、工具定义）
-├── SKILL.md                          # 技能执行指令（触发条件、执行步骤、话术规范）
-├── README.md                         # 本文件
-├── scripts/
-│   ├── xiaonoodles_mcp.js            # MCP 调用脚本（初始化会话 → 调用工具 → 解析 SSE 响应）
-│   └── qr_print.js                   # 终端二维码打印工具（依赖 qrcode-terminal）
-├── references/
-│   ├── brand-intro.md                # 品牌调性、语气风格、话术规范
-│   ├── query_stores.md               # 门店查询场景说明与展示模板
-│   ├── query_store_menu.md           # 菜谱查询场景说明与数据结构
-│   └── send_coupons.md               # 优惠券发放场景说明与推送模板
-└── .gitignore
+├── SKILL.md                 # 核心文件：元数据 + Agent 指令
+├── skill.json               # 机器可读配置（MCP 端点、工具定义）
+├── scripts/                 # MCP 调用脚本
+│   ├── xiaonoodles_mcp.js   #   MCP 调用主脚本
+│   └── qr_print.js          #   二维码打印工具
+├── references/              # 参考文档
+│   ├── brand-intro.md       #   品牌调性、介绍
+│   ├── persona-voice.md     #   小面君人设、话术规范
+│   ├── query_stores.md      #   门店查询场景说明
+│   ├── query_store_menu.md  #   菜单查询场景说明
+│   └── send_coupons.md      #   优惠券发放场景说明
+├── README.md
+├── version.txt              # 版本号文件
+└── LICENSE
 ```
 
-## 技术细节
+## 安装
 
-- MCP 端点：`https://mcp.xiaomian.pro/mcp`
-- 传输协议：Streamable HTTPS（SSE）
-- 会话管理：首次 `initialize` 请求返回 `Mcp-Session-Id` 响应头，后续请求需携带
-- MCP 协议版本：`2024-11-05`
-- 运行依赖：Node.js、qrcode-terminal（二维码打印）
+### 最简单的方式：告诉你的 AI 助手
 
-## 品牌信息
+直接拷贝下面这句话发给你的 AI 助手：
 
-遇见小面于 2014 年在广州创立，以重庆小面切入市场，招牌产品包括红碗豌杂面、金碗酸辣粉、抄手家族、小锅冒菜等。全球门店超 500 家，覆盖北京、上海、广州、深圳、香港、新加坡等城市。2025 年 12 月在港交所主板上市（股票代码：02408.HK），为"中式面馆第一股"。
+> 帮我安装遇见小面 Skill，仓库地址：https://github.com/xiaonoodles/xiaonoodles-guide-skill
+
+Agent 会自动克隆仓库并安装到对应的 Skill 目录。
+
+### 其他安装方式
+
+**手动克隆到 Skill 目录：**
+
+将本仓库克隆到你项目下的 Skill 目录，不同 IDE 对应的路径：
+
+| IDE | Skill 目录 |
+|-----|-------------|
+| Trae | `.trae/skills/xiaonoodles-guide-skill/` |
+| Qoder | `.qoder/skills/xiaonoodles-guide-skill/` |
+| Cursor | `.cursor/skills/xiaonoodles-guide-skill/` |
+| Windsurf | `.windsurf/skills/xiaonoodles-guide-skill/` |
+| Claude Code | `.claude/skills/xiaonoodles-guide-skill/` |
+| 通用 | `.agents/skills/xiaonoodles-guide-skill/` |
+
+```bash
+# 示例：安装到 Trae
+git clone https://github.com/xiaonoodles/xiaonoodles-guide-skill.git \
+  .trae/skills/xiaonoodles-guide-skill
+```
+
+只要目录下有 `SKILL.md`，Agent 下次启动就会自动加载这个 Skill。
+
+## 自动更新
+
+小面君会自动保持最新状态：
+
+- ✅ **静默更新**：每次对话时自动检查并更新（你无感知）
+- 🔄 **手动更新**：说"更新 skill"即可手动触发
+- 📝 **更新日志**：所有更新记录在 `update.log`
+
+详细更新机制见 [SKILL.md](SKILL.md) 的"前置检查"部分。
+
+## 发布平台
+
+- GitHub：https://github.com/xiaonoodles/xiaonoodles-guide-skill
+- Gitee：https://gitee.com/xiaonoodles/xiaonoodles-guide-skill
+
+## 技术协议
+
+| 项目 | 说明 |
+|------|------|
+| 协议 | MCP (Model Context Protocol) |
+| 传输 | Streamable HTTP |
+| 端点 | `https://mcp.xiaomian.pro/mcp` |
+
+## MCP 接入方式
+
+> 注意：直接配置 MCP 服务器仅当次会话生效，不会持久化。推荐使用上方「安装」方式，Skill 安装后永久可用。
+
+在支持 MCP 协议的 AI 客户端中添加以下配置即可接入：
+
+```json
+{
+  "mcpServers": {
+    "xiaonoodles-guide-skill": {
+      "type": "streamable-http",
+      "url": "https://mcp.xiaomian.pro/mcp"
+    }
+  }
+}
+```
+
+## 版本
+
+当前版本：**1.0.1**
+
+- 新增小面君人设（persona-voice.md）
+- 新增自动更新机制
+- 优化 SKILL.md 执行流程
+- 重构 brand-intro.md
+
+## License
+
+[MIT](LICENSE)
