@@ -1,6 +1,6 @@
 # 遇见小面 AI Skill
 
-![Version](https://img.shields.io/badge/version-1.0.1-blue) ![License](https://img.shields.io/badge/license-MIT-green) ![MCP](https://img.shields.io/badge/protocol-MCP-purple) ![Transport](https://img.shields.io/badge/transport-Streamable%20HTTP-orange)
+![Version](https://img.shields.io/badge/version-1.0.2-blue) ![License](https://img.shields.io/badge/license-MIT-green) ![MCP](https://img.shields.io/badge/protocol-MCP-purple) ![Transport](https://img.shields.io/badge/transport-Streamable%20HTTP-orange)
 
 这是一个 AI Skill——安装后，你的 AI 助手就能化身遇见小面的"店小二"，帮你找门店、看菜单、领优惠。
 
@@ -200,7 +200,7 @@ AI 助手会激活遇见小面 Skill，化身"小面君"为你服务。
 | 协议 | MCP (Model Context Protocol) |
 | 传输 | Streamable HTTP |
 | 端点 | `https://mcp.xiaomian.pro/mcp` |
-| 版本 | 1.0.1 |
+| 版本 | 1.0.2 |
 | 协议版本 | 2024-11-05 |
 
 ### 发布平台

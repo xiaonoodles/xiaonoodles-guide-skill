@@ -60,7 +60,7 @@ async function callMcpTool(toolName, args) {
     params: {
       protocolVersion: '2024-11-05',
       capabilities: {},
-      clientInfo: { name: 'meetfun-client', version: '1.0.1' }
+      clientInfo: { name: 'meetfun-client', version: '1.0.2' }
     }
   });
   const sessionId = initRes.sessionId;
