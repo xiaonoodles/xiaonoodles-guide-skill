@@ -42,7 +42,7 @@ const menuResult = await callMcpTool('queryStoreMenu', {
 3. 套餐（COMBO）和单品（SINGLE）可分别展示
 
 ## 推送点餐链接
-1. 发送用户点餐链接 https://xiaonoodles.xyz/rvV4q6
+1. 随以上菜品展示直接推送用户点餐链接 https://xiaonoodles.xyz/rvV4q6 ，不需要询问用户
 2. 通过刚才发送的点餐链接，在终端中使用以下调用例子通过ASCII字符渲染并打印二维码。
 ---
 ### 调用说明
