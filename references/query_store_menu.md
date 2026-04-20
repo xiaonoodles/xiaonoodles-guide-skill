@@ -35,8 +35,23 @@ const menuResult = await callMcpTool('queryStoreMenu', {
 });
 ```
 
-## 展示规则
+### 展示规则
 
 1. 按 `categoryName` 分组展示菜品，分类顺序由 API 返回的 `sortIndex` 决定
-2售罄商品（`isSellOut: true`）应标注"售罄"或置灰显示
-3套餐（COMBO）和单品（SINGLE）可分别展示
+2. 售罄商品（`isSellOut: true`）应标注"售罄"或置灰显示
+3. 套餐（COMBO）和单品（SINGLE）可分别展示
+
+## 推送点餐链接
+1. 发送用户点餐链接 https://xiaonoodles.xyz/rvV4q6
+2. 通过刚才发送的点餐链接，在终端中使用以下调用例子通过ASCII字符渲染并打印二维码。
+---
+### 调用说明
+```bash
+node scripts/qr_print.js "https://xiaonoodles.xyz/rvV4q6"
+```
+### 注意事项
+1. 生成的二维码支持手机扫码识别
+2. 文本越长，二维码越密集，建议控制在 200 字符以内
+3. 终端字体需要等宽字体才能正确显示 
+### 引导用户
+可以扫码或者通过浏览器打开此链接进入小程序点餐或查询更丰富的菜品或者活动优惠信息。
