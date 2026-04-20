@@ -76,7 +76,7 @@ Skill 渠道专属优惠，扫码即领：
 
 直接拷贝下面这句话发给你的 AI 助手：
 
-> 帮我安装遇见小面 Skill，仓库地址：https://github.com/xiaonoodles/xiaonoodles-guide-skill
+> 帮我安装遇见小面 Skill，仓库地址：https://gitee.com/xiaonoodles/xiaonoodles-guide-skill
 
 AI 助手会自动完成安装。
 
