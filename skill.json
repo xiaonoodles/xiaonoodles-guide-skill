@@ -1,6 +1,6 @@
 {
   "name": "xiaonoodles-guide-skill",
-  "display_name": "遇见小面门店查询",
+  "display_name": "遇见小面智能助手",
   "description": "查询指定地址附近的遇见小面门店。触发词包括：XX附近有什么遇见小面、XX附近吃面、XX附近有小面吗、XX附近面馆。",
   "version": "1.0.2",
   "author": "meetfun",
